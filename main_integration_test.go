@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	"github.com/rizalgowandy/library-template-go/pkg/api"
 	"github.com/kokizzu/gotro/L"
+	"github.com/rizalgowandy/library-template-go/pkg/api"
 )
 
 // How to run all integration test:
