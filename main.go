@@ -1,21 +1,21 @@
-// TODO: replace me
-package library
+package jenius
 
 import (
-	"github.com/rizalgowandy/library-template-go/pkg/api"
+	"github.com/rizalgowandy/jenius-go/pkg/api"
 )
 
-// TODO: replace me
-// NewClient creates a client to interact with XYZ API.
+// NewClient creates a client to interact with Jenius API.
 func NewClient(cfg api.Config) (*Client, error) {
 	if err := cfg.Validate(); err != nil {
 		return nil, err
 	}
 
-	return &Client{}, nil
+	return &Client{
+		auth: api.NewAuthentication(cfg),
+	}, nil
 }
 
-// TODO: replace me
-// Client is the main client to interact with XYZ API.
+// Client is the main client to interact with Jenius API.
 type Client struct {
+	auth *api.Authentication
 }

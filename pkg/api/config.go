@@ -7,11 +7,8 @@ import (
 
 // Config is the necessary configuration to call API.
 type Config struct {
-	// Key is the authentication API key.
-	// Most requests to the XYZ API must be authenticated with an API key.
-	// You can create an API key in your Settings page after creating a XYZ account.
-	// Reference: TODO: replace
-	Key string
+	ClientID     string
+	ClientSecret string
 	// Timeout describes total waiting time before a request is treated as timeout.
 	// Optional.
 	// Default: 1 min.
@@ -34,15 +31,18 @@ type Config struct {
 	// HostURL describes the host url target.
 	// HostURL can be filled with your fake server host url for testing purpose.
 	// Optional.
-	// Default: TODO: replace
+	// Default: https://api-sandbox.btpn.com:8089
 	HostURL string
 }
 
 // Validate validates configuration correctness and
 // fill fields with default configuration if left empty.
 func (c *Config) Validate() error {
-	if c.Key == "" {
-		return errors.New("config: invalid key")
+	if c.ClientID == "" {
+		return errors.New("config: invalid client id")
+	}
+	if c.ClientSecret == "" {
+		return errors.New("config: invalid client secret")
 	}
 	if c.Timeout <= 0 {
 		c.Timeout = time.Minute
@@ -54,7 +54,7 @@ func (c *Config) Validate() error {
 		c.RetryMaxWaitTime = 2 * time.Second
 	}
 	if c.HostURL == "" {
-		c.HostURL = "" // TODO: replace
+		c.HostURL = "https://api-sandbox.btpn.com:8089"
 	}
 	return nil
 }
