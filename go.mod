@@ -1,5 +1,4 @@
-// TODO: replace me
-module github.com/rizalgowandy/library-template-go
+module github.com/rizalgowandy/jenius-go
 
 go 1.16
 

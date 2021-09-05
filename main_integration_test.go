@@ -1,4 +1,4 @@
-package library
+package jenius
 
 import (
 	"flag"
@@ -6,7 +6,7 @@ import (
 	"testing"
 
 	"github.com/kokizzu/gotro/L"
-	"github.com/rizalgowandy/library-template-go/pkg/api"
+	"github.com/rizalgowandy/jenius-go/pkg/api"
 )
 
 // How to run all integration test:
@@ -27,8 +27,9 @@ func TestMain(m *testing.M) {
 
 	var err error
 	client, err = NewClient(api.Config{
-		Key:   os.Getenv("KEY"),
-		Debug: true,
+		ClientID:     os.Getenv("CLIENT_ID"),
+		ClientSecret: os.Getenv("CLIENT_SECRET"),
+		Debug:        true,
 	})
 	if L.IsError(err, "client: create failure") {
 		os.Exit(1)
